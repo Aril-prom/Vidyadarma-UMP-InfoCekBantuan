@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cek Domisili</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: url('/img/map-1482895.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 1;
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      background: rgba(12, 21, 69, 0.01); /* transparan */
+      border-radius: 16px;
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(0, 255, 255, 0.3);
+      box-shadow:
+        0 0 10px #00ffee,
+        0 0 20px #00ffee,
+        0 0 30px #ff0066,
+        0 0 40px rgba(0, 255, 255, 0.4);
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #00ffee;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background-color: rgba(28, 37, 65, 0.6);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+
+    .form-group input:focus {
+      background-color: rgba(36, 59, 99, 0.8);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff0066;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .login-btn:hover {
+      background-color: #e60056;
+      transform: scale(1.03);
+    }
+
+    .bottom-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .bottom-text a {
+      color: #00ffee;
+      text-decoration: none;
+    }
+
+    .bottom-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="login-container">
+    <h2>Identifikasi Alamat</h2>
+    <form action="#" method="post">
+      <div class="form-group">
+        <label for="email">Provinsi</label>
+        <input type="text" id="Provinsi" name="email" placeholder="Masukan Provinsi anda" required />
+      </div>
+      <div class="form-group">
+        <label for="Kab/Kota">Kabupaten/Kota</label>
+        <input type="Kota" id="Kota" name="Kota/Kab" placeholder="Masukan Kab./Kota anda" required />
+      </div>
+      
+    </form>
+    <div class="form-group">
+        <label for="Desa">Kelurahan/Desa</label>
+        <input type="Desa" id="Desa" name="Desa" placeholder="Masukan Kelurahan/Desa anda" required />
+      </div>
+     <button type="button" class="login-btn" onclick="window.location.href='cek.html'">
+  Cek Sekarang
+</button>
+    </form>
+    
+  </div>
+</body>
+</html>

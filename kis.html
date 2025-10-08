@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kartu Indonesia Sehat (KIS)</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b, #ff0000);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      animation: fadeDown 1s ease-out;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #ff0033;
+      text-shadow: 0 0 20px rgba(255,0,50,0.8);
+    }
+
+    .typing {
+      border-right: 3px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 4s steps(40, end), blink .8s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      animation: fadeUp 1.2s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #00aaff;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin-top: 20px;
+      background: linear-gradient(90deg, #ff0033, #0077ff);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255,0,50,0.6);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(0,119,255,0.8);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><span class="typing">Kartu Indonesia Sehat (KIS)</span></h1>
+  </header>
+
+  <section>
+    <h2>Deskripsi</h2>
+    <p>
+      <b>Kartu Indonesia Sehat (KIS)</b> adalah program bantuan kesehatan dari pemerintah 
+      yang memungkinkan warga miskin dan rentan mendapatkan layanan kesehatan gratis 
+      di fasilitas kesehatan yang bekerja sama dengan <b>BPJS Kesehatan</b>. 
+      Dengan KIS, peserta bisa berobat di puskesmas, klinik, atau rumah sakit tanpa membayar iuran bulanan, 
+      karena biayanya ditanggung oleh pemerintah.
+    </p>
+
+    <h2>Siapa yang Berhak?</h2>
+    <ul>
+      <li>Warga miskin atau rentan miskin yang terdaftar di <b>DTKS (Data Terpadu Kesejahteraan Sosial)</b>.</li>
+      <li>Peserta <b>KIS PBI (Penerima Bantuan Iuran)</b> di mana iurannya sepenuhnya ditanggung pemerintah.</li>
+      <li>Warga yang belum memiliki asuransi kesehatan dan memenuhi kriteria ekonomi lemah.</li>
+    </ul>
+
+    <h2>Perbedaan KIS dan BPJS Kesehatan</h2>
+    <p>
+      Banyak yang mengira KIS dan BPJS Kesehatan sama, padahal keduanya memiliki perbedaan mendasar:
+    </p>
+    <ul>
+      <li><b>KIS:</b> Diberikan khusus kepada masyarakat tidak mampu. Iuran ditanggung pemerintah sepenuhnya.</li>
+      <li><b>BPJS Kesehatan:</b> Diperuntukkan bagi seluruh warga Indonesia. Peserta membayar iuran sendiri sesuai kelas (Kelas 1, 2, atau 3).</li>
+    </ul>
+
+    <h2>Cara Mendapatkan atau Mengecek KIS</h2>
+    <ol>
+      <li>Cek status keluarga di <b>DTKS</b> melalui kantor desa/kelurahan atau petugas sosial setempat.</li>
+      <li>Jika belum terdaftar, ajukan permohonan ke <b>Dinas Sosial</b> dengan membawa dokumen seperti KTP, KK, dan <b>Surat Keterangan Tidak Mampu (SKTM)</b>.</li>
+      <li>Setelah disetujui, kartu KIS akan diterbitkan dan peserta dapat menggunakannya di fasilitas kesehatan yang telah bekerja sama.</li>
+    </ol>
+
+    <h2>Catatan Penting</h2>
+    <p>
+      Pemerintah secara rutin melakukan <b>verifikasi dan validasi data penerima</b> untuk memastikan bantuan tepat sasaran. 
+      Pastikan data kependudukan dan status sosial ekonomi kamu selalu <b>terbaru di DTKS</b>.  
+      Jika KIS dinonaktifkan, segera <b>ajukan reaktivasi</b> melalui Dinas Sosial agar tetap bisa memperoleh layanan kesehatan.
+    </p>
+
+    <a href="index.html" class="btn">Kembali Kedashboard</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Sistem Informasi Bantuan Sosial - Indonesia
+  </footer>
+
+  <script>
+    // Animasi scroll halus untuk anchor link
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

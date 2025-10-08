@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cek Info Bantuan</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+       
+       
+       background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.4)), 
+                url('/img/friends-social-media.jpg') no-repeat center center/cover;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .overlay {
+        background: rgba(0,0,0,0.6);
+        padding: 30px;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        color: white;
+          box-shadow:
+        0 0 10px #00ffee,
+        0 0 20px #00ffee,
+        0 0 30px #ff0066,
+        0 0 40px rgba(0, 255, 255, 0.4);
+
+    }
+    h1 {
+        color: #a70016;
+        margin-bottom: 5px;
+    }
+    h2 {
+        margin-top: 0;
+        font-weight: bold;
+    }
+    input {
+        width: 90%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        margin: 15px 0;
+        font-size: 16px;
+    }
+    button {
+        padding: 12px;
+        border: none;
+        background: #a70016;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #1b8fd1;
+    }
+
+    /* Hasil */
+    .result-container {
+       background: rgba(0,0,0,0.6);
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+        max-width: 900px;
+        width: 100%;
+         box-shadow:
+        0 0 10px #00ffee,
+        0 0 20px #00ffee,
+        0 0 30px #ff0066,
+        0 0 40px rgba(0, 255, 255, 0.4);
+        display: none;
+    }
+    .result-layout {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .info {
+        flex: 2;
+        min-width: 250px;
+    }
+    .qrcode-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 150px;
+    }
+    .qrcode-container img {
+        max-width: 150px;
+        height: auto;
+    }
+
+    /* Tombol sejajar */
+    .button-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+    .print-btn {
+        background: #a31515;
+        flex: 1;
+    }
+    .print-btn:hover {
+        background: #1da94d;
+    }
+    .back-btn {
+        background: #dc2626;
+        flex: 1;
+    }
+    .back-btn:hover {
+        background: #b91c1c;
+    }
+
+    @media (max-width: 600px) {
+        .result-layout {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .info {
+            text-align: left;
+            width: 100%;
+        }
+        .button-group {
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Form Input -->
+<div class="overlay" id="form-section">
+    <h1>CekInfoBantuan</h1>
+    <h2>Cek Status Bantuan</h2>
+    <input type="text" id="nik" placeholder="Masukkan NIK">
+    <button onclick="cekBantuan()">Cek Sekarang</button>
+</div>
+
+<!-- Hasil -->
+<div class="result-container" id="result-section">
+    <div class="result-layout">
+        <div class="info">
+            <h3>Hasil Pengecekan</h3>
+            <p>NIK <b id="nik-display"></b>:</p>
+            <ul>
+                <li>KIP Kuliah</li>
+                <li>DTKS</li>
+                <li>PKH</li>
+                <li>BLT</li>
+            </ul>
+            <p><b>Nomor Petugas:</b> 0812-3456-7890 (Desa Dukuh Waluh)</p>
+            <div class="button-group">
+                <button class="print-btn" onclick="window.print()">Cetak Hasil</button>
+                <button class="back-btn" onclick="window.location.href='index.html'">Kembali ke Dashboard</button>
+            </div>
+        </div>
+        <div class="qrcode-container">
+            <img id="qrcode" src="" alt="QR Code">
+        </div>
+    </div>
+</div>
+
+<script>
+function cekBantuan() {
+    let nik = document.getElementById('nik').value.trim();
+    if(nik === "") {
+        alert("Masukkan NIK terlebih dahulu!");
+        return;
+    }
+
+    let bantuanList = "";
+
+    if (nik === "3207090081105") {
+        bantuanList = `
+            <li>Terdaftar di DTKS</li>
+            <li> Mendapatkan KIP Kuliah</li>
+            <li> Mendapatkan PKH</li>
+        `;
+    } else {
+        bantuanList = `
+            <li> Tidak Terdaftar di DTKS</li>
+            <li> Tetapi Mendapatkan BSU</li>
+            <li> Tetapi Mendapatkan PKH</li>
+            <li> Tetapi Mendapatkan BNPT</li>
+        `;
+    }
+
+    document.getElementById('nik-display').innerText = nik;
+    document.querySelector("#result-section ul").innerHTML = bantuanList;
+
+    document.getElementById('qrcode').src = 
+        `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cekbantuan.go.id/hasil/${nik}`;
+
+    document.getElementById('form-section').style.display = "none";
+    document.getElementById('result-section').style.display = "block";
+}
+</script>
+
+</body>
+</html>

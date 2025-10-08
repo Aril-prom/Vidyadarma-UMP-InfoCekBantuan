@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program Keluarga Harapan (PKH)</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b, #ff0000);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      animation: fadeDown 1s ease-out;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #ff0033;
+      text-shadow: 0 0 20px rgba(255,0,50,0.8);
+    }
+
+    .typing {
+      border-right: 3px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 4s steps(40, end), blink .8s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      animation: fadeUp 1.2s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #00aaff;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin-top: 20px;
+      background: linear-gradient(90deg, #ff0033, #0077ff);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255,0,50,0.6);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(0,119,255,0.8);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><span class="typing">Program Keluarga Harapan (PKH)</span></h1>
+  </header>
+
+  <section>
+    <h2>Deskripsi</h2>
+    <p>
+      Program Keluarga Harapan (PKH) adalah bantuan sosial bersyarat dari Kementerian Sosial Republik Indonesia 
+      yang diberikan kepada keluarga miskin yang memenuhi kriteria tertentu. Tujuan utama PKH adalah meningkatkan 
+      kualitas hidup keluarga penerima manfaat terutama dalam bidang pendidikan, kesehatan, dan kesejahteraan sosial.
+    </p>
+
+    <h2>Persyaratan</h2>
+    <ul>
+      <li>Keluarga miskin atau rentan miskin yang terdaftar dalam Data Terpadu Kesejahteraan Sosial (DTKS).</li>
+      <li>Memiliki ibu hamil, balita, anak usia sekolah, lanjut usia, atau penyandang disabilitas berat.</li>
+      <li>Memiliki identitas kependudukan yang sah (NIK/KTP dan Kartu Keluarga).</li>
+    </ul>
+
+    <h2>Timeline</h2>
+    <p>
+      Penyaluran bantuan PKH dilakukan dalam beberapa tahap sepanjang tahun (biasanya 4 kali dalam setahun). 
+      Penerima akan diverifikasi terlebih dahulu oleh petugas lapangan sebelum dana dicairkan.
+    </p>
+
+    <h2>Tutorial Pendaftaran</h2>
+    <ol>
+      <li>Mendaftar di Dinas Sosial setempat atau melalui kelurahan/desa dengan membawa KTP dan KK.</li>
+      <li>Data akan diverifikasi oleh petugas.</li>
+      <li>Jika memenuhi syarat, nama akan masuk ke DTKS.</li>
+      <li>Pencairan bantuan dilakukan melalui bank yang telah ditentukan pemerintah.</li>
+    </ol>
+
+    
+    <a href="index.html" class="btn" style="background:linear-gradient(90deg,#0077ff,#ff0033);margin-left:10px;">Kembali ke Beranda</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Sistem Informasi Bantuan Sosial - Indonesia
+  </footer>
+
+  <script>
+    // Smooth scroll ke section saat klik tombol
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

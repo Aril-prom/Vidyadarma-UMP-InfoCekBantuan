@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIP Kuliah (Kartu Indonesia Pintar Kuliah)</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b, #ff0000);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      animation: fadeDown 1s ease-out;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #ff0033;
+      text-shadow: 0 0 20px rgba(255,0,50,0.8);
+    }
+
+    .typing {
+      border-right: 3px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 4s steps(40, end), blink .8s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      animation: fadeUp 1.2s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #00aaff;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin-top: 20px;
+      background: linear-gradient(90deg, #ff0033, #0077ff);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255,0,50,0.6);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(0,119,255,0.8);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><span class="typing">KIP Kuliah (Kartu Indonesia Pintar Kuliah)</span></h1>
+  </header>
+
+  <section>
+    <h2>Deskripsi</h2>
+    <p>
+      Kartu Indonesia Pintar Kuliah (KIP Kuliah) adalah program bantuan pendidikan dari pemerintah Indonesia 
+      yang ditujukan untuk mahasiswa dari keluarga kurang mampu secara ekonomi tetapi memiliki prestasi akademik. 
+      Program ini memberikan pembebasan biaya kuliah (UKT/SPP) serta bantuan biaya hidup bulanan sesuai aturan yang berlaku.
+    </p>
+
+    <h2>Persyaratan</h2>
+    <ul>
+      <li>Warga Negara Indonesia (WNI).</li>
+      <li>Lulusan SMA/SMK/MA atau sederajat maksimal 2 tahun sebelumnya.</li>
+      <li>Memiliki potensi akademik baik, tetapi terbatas secara ekonomi.</li>
+      <li>Penerima KIP/Kartu Keluarga Sejahtera/PKH lebih diprioritaskan.</li>
+      <li>Diterima di PTN/PTS dengan program studi terakreditasi.</li>
+    </ul>
+
+    <h2>Timeline</h2>
+    <p>
+      Proses pendaftaran KIP Kuliah biasanya berlangsung setiap awal tahun akademik dengan alur sebagai berikut:
+    </p>
+    <ol>
+      <li>Januari – Februari: Sosialisasi program & persiapan dokumen.</li>
+      <li>Maret – April: Pendaftaran online melalui sistem KIP Kuliah.</li>
+      <li>Mei – Juli: Seleksi masuk perguruan tinggi (SNBP, SNBT, Mandiri).</li>
+      <li>Agustus: Verifikasi dokumen & wawancara (jika diperlukan).</li>
+      <li>September: Pengumuman penerima dan pencairan bantuan.</li>
+    </ol>
+
+    <h2>Tutorial Pendaftaran</h2>
+    <ol>
+      <li>Buka website resmi: <a href="https://kip-kuliah.kemdikbud.go.id" target="_blank" style="color:#4da6ff;">kip-kuliah.kemdikbud.go.id</a></li>
+      <li>Buat akun dengan memasukkan NIK, NISN, dan NPSN.</li>
+      <li>Isi data diri, data keluarga, dan unggah dokumen.</li>
+      <li>Pilih jalur seleksi perguruan tinggi (SNBP, SNBT, atau Mandiri).</li>
+      <li>Cetak kartu peserta KIP Kuliah.</li>
+      <li>Tunggu hasil seleksi dan pengumuman penerimaan.</li>
+    </ol>
+
+    <a href="index.html" target="_blank" class="btn">Kembali ke Dashboard</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Sistem Informasi Bantuan Sosial - Indonesia
+  </footer>
+
+  <script>
+    // Smooth scroll ke section saat klik tombol
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

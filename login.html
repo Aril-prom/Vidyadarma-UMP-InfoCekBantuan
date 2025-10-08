@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | InfoCekBantuan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #004080, #b30000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+
+    .login-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .login-box h2 {
+      color: #004080;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .login-box i {
+      color: #b30000;
+      margin-right: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      border-color: #b30000;
+      outline: none;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #004080, #b30000);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.02);
+      opacity: 0.9;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2><i class="fas fa-hand-holding-heart"></i> InfoCekBantuan</h2>
+    <p style="color:#555; margin-bottom:25px;">Login hanya untuk perangkat resmi Desa/Kelurahan</p>
+    
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="desa">Nama Desa / Kelurahan</label>
+        <input type="text" id="desa" placeholder="Masukkan nama desa..." required />
+      </div>
+      <div class="form-group">
+        <label for="password">Kata Sandi</label>
+        <input type="password" id="password" placeholder="Masukkan password..." required />
+      </div>
+      <button type="submit" class="btn">Masuk</button>
+    </form>
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const desa = document.getElementById('desa').value.trim().toLowerCase();
+      const password = document.getElementById('password').value.trim();
+
+      if (desa === "dukuh waluh" && password === "123") {
+        message.textContent = "Login berhasil! Mengalihkan ke halaman laporan...";
+        message.className = "message success";
+        setTimeout(() => {
+          window.location.href = "lapor.html";
+        }, 1500);
+      } else {
+        message.textContent = "Nama desa atau kata sandi salah.";
+        message.className = "message error";
+      }
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BPNT - Bantuan Pangan Non Tunai</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b, #ff0000);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      animation: fadeDown 1s ease-out;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #ff0033;
+      text-shadow: 0 0 20px rgba(255,0,50,0.8);
+    }
+
+    .typing {
+      border-right: 3px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 4s steps(40, end), blink .8s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      animation: fadeUp 1.2s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #00aaff;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin-top: 20px;
+      background: linear-gradient(90deg, #ff0033, #0077ff);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255,0,50,0.6);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(0,119,255,0.8);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><span class="typing">BPNT - Bantuan Pangan Non Tunai</span></h1>
+  </header>
+
+  <section>
+    <h2>Apa itu BPNT?</h2>
+    <p>
+      BPNT adalah bantuan dari pemerintah berupa saldo non-tunai sebesar <b>Rp200.000 per bulan</b> 
+      yang hanya bisa digunakan untuk membeli bahan makanan pokok seperti beras, telur, sayur, tahu/tempe, dan minyak goreng.
+      Bantuan ini tidak bisa ditarik tunai, melainkan harus dibelanjakan di warung resmi (e-Warong/agen).
+    </p>
+
+    <h2>Siapa yang Bisa Dapat?</h2>
+    <ul>
+      <li>Keluarga miskin atau rentan miskin.</li>
+      <li>Terdaftar dalam <b>DTKS (Data Terpadu Kesejahteraan Sosial)</b>.</li>
+      <li>Memiliki <b>Kartu Keluarga Sejahtera (KKS)</b>.</li>
+    </ul>
+    <p><i>Catatan: Semua penerima PKH biasanya juga dapat BPNT, tapi tidak semua penerima BPNT otomatis dapat PKH.</i></p>
+
+    <h2>Cara Menggunakan Bantuan</h2>
+    <ol>
+      <li>Bawa <b>KKS</b> ke e-Warong atau agen resmi di desa.</li>
+      <li>Gunakan saldo untuk belanja bahan makanan pokok.</li>
+      <li>Saldo hanya untuk pangan, tidak untuk rokok, pulsa, atau barang non-pangan.</li>
+    </ol>
+
+    <h2>Kalau Belum Punya KKS</h2>
+    <p>
+      Masih bisa menjadi calon penerima dengan cara <b>lapor ke desa/pendamping sosial</b>. 
+      Setelah KKS dibuat dan siap, saldo BPNT akan langsung bisa digunakan di e-Warong/agen resmi.
+    </p>
+
+    <h2>Kenapa Ada yang Dapat BPNT Tapi Tidak PKH?</h2>
+    <p>
+      <b>PKH</b> hanya diberikan kepada keluarga sangat miskin yang memiliki anak sekolah, ibu hamil, lansia, atau disabilitas.
+      Sedangkan <b>BPNT</b> diberikan kepada semua keluarga miskin/rentan miskin, meskipun tidak memiliki tanggungan tersebut.
+    </p>
+
+    <h2>Pesan Singkat untuk Warga</h2>
+    <p>
+      Kalau keluarga kamu tergolong miskin dan belum pernah menerima BPNT, 
+      segera <b>cek DTKS</b> dan <b>lapor ke desa</b>. 
+      Bantuan ini hadir untuk memastikan dapur keluarga tetap ada makanan bergizi setiap bulan.
+    </p>
+
+    <a href="index.html" class="btn">Kembali Ke Dashboard</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Sistem Informasi Bantuan Sosial - Indonesia
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem Pelaporan Bantuan Sosial Salah Sasaran</title>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #003366, #b30000);
+    margin: 0;
+    padding: 0;
+    color: #222;
+  }
+
+  .container {
+    max-width: 850px;
+    background: #fff;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  h1 {
+    text-align: center;
+    color: #b30000;
+    font-weight: 700;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #000;
+    background: #fff;
+  }
+
+  option {
+    color: #000;
+    background: #fff;
+  }
+
+  button {
+    background: #003366;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background: #002244;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  th {
+    background: #b30000;
+    color: #fff;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  #laporDinasBtn {
+    background: #007b3e;
+  }
+
+  #laporDinasBtn:hover {
+    background: #005a2c;
+  }
+
+  .hapus-btn {
+    background: #b30000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+
+  .hapus-btn:hover {
+    background: #800000;
+  }
+
+  .alert {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+  }
+
+  .alert.success {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .alert.info {
+    background: #cce5ff;
+    color: #004085;
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      margin: 20px;
+      padding: 20px;
+    }
+    th, td {
+      font-size: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>💬 Pelaporan Salah Sasaran Bansos</h1>
+
+  <form id="laporForm">
+    <label>NIK:</label>
+    <input type="text" id="nik" required>
+
+    <label>Nama Pelapor:</label>
+    <input type="text" id="nama" required>
+
+    <label>Jenis Bantuan:</label>
+    <select id="program" required>
+      <option value="">-- Pilih Bantuan --</option>
+      <option value="KIS">KIS</option>
+      <option value="KIP Kuliah">KIP Kuliah</option>
+      <option value="PKH">PKH</option>
+      <option value="BPNT">BPNT</option>
+      <option value="BLT Desa">BLT Desa</option>
+    </select>
+
+    <label>Deskripsi Laporan:</label>
+    <textarea id="deskripsi" rows="4" placeholder="Tuliskan laporan masyarakat" required></textarea>
+
+    <button type="submit">Kirim Laporan</button>
+  </form>
+
+  <h2>📋 Daftar Laporan</h2>
+  <table id="tabelLaporan">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>NIK</th>
+        <th>Nama</th>
+        <th>Program</th>
+        <th>Deskripsi</th>
+        <th>Tanggal</th>
+        <th>Status</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="btn-group">
+    <button id="exportBtn">⬇️ Ekspor CSV</button>
+    <button id="laporDinasBtn">📤 Lapor ke Dinas Sosial</button>
+  </div>
+
+  <div id="notif" class="alert"></div>
+</div>
+
+<script>
+const form = document.getElementById("laporForm");
+const tabelBody = document.querySelector("#tabelLaporan tbody");
+const notif = document.getElementById("notif");
+let dataLaporan = JSON.parse(localStorage.getItem("laporan")) || [];
+
+renderTable();
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const laporan = {
+    nik: document.getElementById("nik").value,
+    nama: document.getElementById("nama").value,
+    program: document.getElementById("program").value,
+    deskripsi: document.getElementById("deskripsi").value,
+    tanggal: new Date().toLocaleString(),
+    status: "Diterima Desa"
+  };
+  dataLaporan.push(laporan);
+  localStorage.setItem("laporan", JSON.stringify(dataLaporan));
+  renderTable();
+  form.reset();
+  showNotif("Laporan berhasil dikirim ke desa!", "success");
+});
+
+function renderTable() {
+  tabelBody.innerHTML = "";
+  dataLaporan.forEach((r, i) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${i + 1}</td>
+      <td>${r.nik}</td>
+      <td>${r.nama}</td>
+      <td>${r.program}</td>
+      <td>${r.deskripsi}</td>
+      <td>${r.tanggal}</td>
+      <td>${r.status}</td>
+      <td><button class="hapus-btn" onclick="hapusLaporan(${i})">Hapus</button></td>
+    `;
+    tabelBody.appendChild(tr);
+  });
+}
+
+function hapusLaporan(index) {
+  if (confirm("Yakin ingin menghapus laporan ini?")) {
+    dataLaporan.splice(index, 1);
+    localStorage.setItem("laporan", JSON.stringify(dataLaporan));
+    renderTable();
+    showNotif("Laporan berhasil dihapus.", "success");
+  }
+}
+
+document.getElementById("exportBtn").addEventListener("click", () => {
+  const csvHeader = "NIK,Nama,Program,Deskripsi,Tanggal,Status\n";
+  const csvRows = dataLaporan.map(r => `${r.nik},${r.nama},${r.program},"${r.deskripsi}",${r.tanggal},${r.status}`).join("\n");
+  const blob = new Blob([csvHeader + csvRows], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "laporan_salah_sasaran.csv";
+  a.click();
+});
+
+document.getElementById("laporDinasBtn").addEventListener("click", () => {
+  if (dataLaporan.length === 0) {
+    showNotif("Belum ada laporan untuk dikirim ke Dinas Sosial.", "info");
+    return;
+  }
+  dataLaporan = dataLaporan.map(r => ({ ...r, status: "Diteruskan ke Dinas Sosial" }));
+  localStorage.setItem("laporan", JSON.stringify(dataLaporan));
+  renderTable();
+  showNotif("Semua laporan berhasil diteruskan ke Dinas Sosial.", "success");
+});
+
+function showNotif(msg, type) {
+  notif.textContent = msg;
+  notif.className = "alert " + type;
+  notif.style.display = "block";
+  setTimeout(() => notif.style.display = "none", 3000);
+}
+</script>
+
+</body>
+</html>
+```
